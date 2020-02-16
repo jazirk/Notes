@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkwhite"
     tools:context=".AddNotes">
 
     <androidx.appcompat.widget.Toolbar
@@ -13,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/colorPrimary"
+        android:background="@color/darkgray"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <EditText
@@ -25,6 +26,7 @@
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Enter Title"
+        android:maxLength="100"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

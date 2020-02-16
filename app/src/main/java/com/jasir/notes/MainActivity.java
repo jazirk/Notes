@@ -2,6 +2,7 @@
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
@@ -9,11 +10,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.List;
 
     public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerView;
+    Adapter adapter;
+    NotesDatabase nDB;
+    TextView noItemText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +32,26 @@ import android.widget.Toast;
         toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
         recyclerView = findViewById(R.id.allNotesList);
+        nDB=new NotesDatabase(this);
+        List<Notes> allNotes = nDB.getAllNotes();
 
+
+        noItemText = findViewById(R.id.noItemText);
+
+        if(allNotes.isEmpty()){
+            noItemText.setVisibility(View.VISIBLE);
+        }else {
+            noItemText.setVisibility(View.GONE);
+            displayList(allNotes);
+        }
+
+
+    }
+
+    private void displayList(List<Notes> allNotes) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new Adapter(this,allNotes);
+        recyclerView.setAdapter(adapter);
     }
 
 
@@ -38,7 +65,6 @@ import android.widget.Toast;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.add){
-            Toast.makeText(this, "Add New Note", Toast.LENGTH_SHORT).show();
             Intent i = new Intent(this,AddNotes.class);
             startActivity(i);
         }

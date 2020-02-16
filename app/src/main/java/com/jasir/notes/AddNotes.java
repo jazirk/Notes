@@ -3,6 +3,7 @@ package com.jasir.notes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -86,7 +87,7 @@ public class AddNotes extends AppCompatActivity {
                 long id = nDB.addNote(note);
                 //Note check = sDB.getNote(id);
                 //Log.d("inserted", "Note: "+ id + " -> Title:" + check.getTitle()+" Date: "+ check.getDate());
-                onBackPressed();
+                goToMain();
 
                 Toast.makeText(this, "Note Saved.", Toast.LENGTH_SHORT).show();
             }else {
@@ -98,6 +99,11 @@ public class AddNotes extends AppCompatActivity {
             onBackPressed();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void goToMain() {
+        Intent intent=new Intent(this,MainActivity.class);
+        startActivity(intent);
     }
 
     @Override
