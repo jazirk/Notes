@@ -1,4 +1,4 @@
-package com.jasir.notes;
+package com.jasir.notes.Models;
 
 public class Notes {
     private long id;
@@ -7,21 +7,21 @@ public class Notes {
     private String date;
     private String time;
 
-    Notes(String title,String content,String date, String time){
+    public Notes(String title,String content,String date, String time){
         this.title = title;
         this.content = content;
         this.date = date;
         this.time = time;
     }
 
-    Notes(long id,String title,String content,String date, String time){
+    public Notes(long id,String title,String content,String date, String time){
         this.id = id;
         this.title = title;
         this.content = content;
         this.date = date;
         this.time = time;
     }
-    Notes(){
+    public Notes(){
         // empty constructor
     }
 
