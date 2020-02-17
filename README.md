@@ -21,3 +21,10 @@ Used Technolgies :
 <li>Android</li>
 <li>Sqlite</li>
 </ul>
+
+
+<h2> Clone the project</h2>
+
+```clone
+git clone https://github.com/jazirk/Notes.git
+```
